@@ -1,42 +1,45 @@
 function countProfit(shoppers) {
-  let listBarang = [ ['Sepatu Stacattu', 1500000, 10],
-                     ['Baju Zoro', 500000, 2],
-                     ['Sweater Uniklooh', 175000, 1]
-                   ];
-  // you can only write your code here!
-  var arr = []
-
-  for (var i = 0; i < listBarang[0].length; i++) {
-    var inventObj = {
-      product: listBarang[i][0],
-      shoppers: [],
-      leftOver: listBarang[i][2],
-      totalProfit: 0,
+    let listBarang = [ ['Sepatu Stacattu', 1500000, 10],
+                       ['Baju Zoro', 500000, 2],
+                       ['Sweater Uniklooh', 175000, 1]
+                     ];
+    // you can only write your code here!
+    if (shoppers[0] === undefined) {
+      return [];
     }
-    var sisaBarang = listBarang[i][2]
-    var price = listBarang[i][1]
-    var terjual = 0
-    for(var j = 0; j < shoppers.length; j++) {
-      // console.log(listBarang[i][0])
-      if (shoppers[j].product === inventObj.product) {
-        if (shoppers[j].amount > sisaBarang) {
-
-        } else {
-          inventObj.shoppers.push(shoppers[j].name)
-          sisaBarang = sisaBarang - shoppers[j].amount
-          terjual = terjual + shoppers[j].amount
-        }
-          inventObj.leftOver = sisaBarang
-          inventObj.totalProfit = terjual * price
-        
-        
-      }
-    }
-    arr.push(inventObj);
-  }
+    var arr = []
   
-  return arr;
-}
+    for (var i = 0; i < listBarang[0].length; i++) {
+      var inventObj = {
+        product: listBarang[i][0],
+        shoppers: [],
+        leftOver: listBarang[i][2],
+        totalProfit: 0,
+      }
+      var sisaBarang = listBarang[i][2]
+      var price = listBarang[i][1]
+      var terjual = 0
+      for(var j = 0; j < shoppers.length; j++) {
+        // console.log(listBarang[i][0])
+        if (shoppers[j].product === inventObj.product) {
+          if (shoppers[j].amount > sisaBarang) {
+  
+          } else {
+            inventObj.shoppers.push(shoppers[j].name)
+            sisaBarang = sisaBarang - shoppers[j].amount
+            terjual = terjual + shoppers[j].amount
+          }
+            inventObj.leftOver = sisaBarang
+            inventObj.totalProfit = terjual * price
+          
+          
+        }
+      }
+      arr.push(inventObj);
+    }
+    
+    return arr;
+  }
 
 // TEST CASES
 console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 2}, {name: 'Vanessa', product: 'Sepatu Stacattu', amount: 3}, {name: 'Rani', product: 'Sweater Uniklooh', amount: 2}]));
